@@ -24,25 +24,35 @@ body {
 
 h1 {
     font-family: "Sacramento", cursive;
+    margin: 50px auto 0 auto;
+    /*
+    We want to increase our font size. We could just use pixels, like so:
+    font-size: 90px;
+    But, that may vary depending on the browser configuration in which the page is viewed.
+    So, we'll use percentage instead. It's important to remember that 100% = 16px.
+    So, if we want 90px, we need (90 / 16) * 100 = 562.5%
+    1em is equivilant to 100%. So, we could also use 5.625em as our unit.
+    NOTE: The font size is calculated from the inherited size. Which means, that if the body's font
+    size grows larger, the h1 size will grow accordingly. To overcome this, and avoid weird sizing,
+    we use the 'rem' unit, which stands for 'root em'. This means that the 100% (16px) will never
+    change, regardless of the parents.
+    */
+    font-size: 5.625rem;
 }
 
 h2 {
     font-family: "Montserrat", sans-serif;
+    font-size: 2.5rem;
 }
 
 h3 {
     font-family: "Montserrat", sans-serif;
 }
 
-h1 {
-    margin-top: 0px;
-}
-
-
 .profile-pic {
-  height: 20%;
-  width: 20%;
-  border-radius: 50%;
+    height: 20%;
+    width: 20%;
+    border-radius: 50%;
 }
 
 .top-cloud {
@@ -54,7 +64,7 @@ h1 {
     and not the container size (which changes according to the page). Since
     the image size never changes, it will always look nice.*/
     left: 200px;
-    top: 50px;
+    top: 10px;
 }
 
 .bottom-cloud {
