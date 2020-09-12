@@ -38,15 +38,22 @@ h1 {
     change, regardless of the parents.
     */
     font-size: 5.625rem;
+    color: #66BFBF;
+    /* Note that when specifying line-height, the preferred way it to write it without specifying the unit.
+    When the unit is omitted in line-height, the default is no. of lines.*/
+    line-height: 2;
 }
 
 h2 {
     font-family: "Montserrat", sans-serif;
     font-size: 2.5rem;
+    color: #66BFBF;
+    font-weight: normal;
 }
 
 h3 {
-    font-family: "Montserrat", sans-serif;
+  color: #11999E;  
+  font-family: "Montserrat", sans-serif;
 }
 
 .profile-pic {
