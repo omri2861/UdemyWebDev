@@ -82,10 +82,37 @@ h3 {
     but then completely ignores it when going to position the next element.*/
 }
 
+.skill-row {
+    width: 50%;
+    /* The thing is, when we set the width to 50%, it puts the elements in the left and not in the
+    middle like we want. I thought that to overcome this, I could do:
+    position: relative;
+    left: 25%;
+    Putting the element 25% to the middle, when it's 50% of the screen, leaves 25% at each side.
+    However, there is a better way to solve it, like so.
+    */
+    margin: 100px auto;
+    text-align: left;
+    line-height: 2;
+}
+
 .top-container {
     position: relative;
     padding-top: 200px;
     background-color: #cffffe;
+}
+
+.code-img {
+    width: 25%;
+    /* Remember that width is calculated from the width of the parent, not of the entire page */
+    float: left;
+    margin-right: 30px;
+}
+
+.chef-img {
+    width: 25%;
+    float: right;
+    margin-left: 30px;
 }
 
 .pro {
