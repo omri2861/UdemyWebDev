@@ -1,0 +1,9 @@
+# The .gitignore file for my course work :)
+
+# Visual Studio Code files
+.vscode/
+
+# Course files (pdfs, instructions, exercises...)
+resources/
+*.pdf
+
