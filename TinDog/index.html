@@ -3,11 +3,21 @@
     <head>
         <meta charset="utf-8" />
         <title>TinDog</title>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+
+        <!-- Google Fonts -->
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;600;700;900&family=Ubuntu:wght@300;400;500;700&display=swap"
             rel="stylesheet"
         />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        
+        <!-- Bootstrap -->
         <script
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -23,53 +33,54 @@
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"
         ></script>
-        <link rel="stylesheet" href="css/styles.css" />
     </head>
 
     <body>
         <section id="title">
-            <!-- Nav Bar -->
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="">Tindog</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    class="collapse navbar-collapse"
-                    id="navbarSupportedContent"
-                >
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Download</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <div class="container-fluid">
+                <!-- Nav Bar -->
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a class="navbar-brand" href="">Tindog</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">Download</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-            <!-- Title -->
+                <!-- Title -->
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1>Meet new and interesting dogs nearby.</h1>
-                    <button type="button">Download</button>
-                    <button type="button">Download</button>
-                </div>
-                <div class="col-lg-6">
-                    <img src="images/iphone6.png" alt="iphone-mockup" />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1>Meet new and interesting dogs nearby.</h1>
+                        <button type="button" class="btn btn-dark btn-lg"><i class="fab fa-apple"></i>Download</button>
+                        <button type="button" class="btn btn-outline-light btn-lg"><i class="fab fa-google-play"></i></i>Download</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="images/iphone6.png" alt="iphone-mockup" id="iphone" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -85,6 +96,7 @@
 
             <h3>Guaranteed to work.</h3>
             <p>Find the love of your dog's life or your money back.</p>
+        </div>
         </section>
 
         <!-- Testimonials -->
