@@ -52,3 +52,9 @@ grid lesson.
 to fit alll the columns. It is completely fine that the columns overflow to another row
 if they're too big, or if it doesn't take up the whole row if they're too small. The row
 is more of a logical section of the page.
+
+### Buttons
+There is this awesome site called Font Awesome, which contains tons of icons, fonts, and other
+neat stuff, free for commercial use (I think). They used to be internet good-guys, but their policy
+changed a bit since Angela's lesson (now they have a "pro" version). Should definatly remember this
+though.
