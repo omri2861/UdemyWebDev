@@ -11,13 +11,15 @@ h1 {
     font-weight: 900;
 }
 
-i {
-    padding-right: 0.75rem;
-}
-
+/* Title Section */
 .container-fluid {
     padding: 3% 15%;
     overflow: hidden;
+}
+
+#title {
+    background-color: #ff4c68;
+    color: #ffffff;
 }
 
 /* Navigation Bar */
@@ -27,7 +29,7 @@ i {
 }
 
 .navbar-brand {
-    font-style: "Ubuntu";
+    font-family: "Ubuntu";
     font-size: 2.5rem;
 }
 
@@ -55,7 +57,22 @@ i {
     position: absolute;
 }
 
-#title {
-    background-color: #ff4c68;
-    color: #ffffff;
+/* Features */
+
+.feature-col {
+    text-align: center;
+}
+
+.feature-col h3 {
+    font-weight: 700;
+    font-size: 1.5rem; /* bold */
+}
+
+.feature-col p {
+    color: #8f8f8f;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #ef8172;
 }
