@@ -59,20 +59,29 @@ h1 {
 
 /* Features */
 
-.feature-col {
+.feature-box {
     text-align: center;
+    padding: 5%;
 }
 
-.feature-col h3 {
+.feature-box h3 {
     font-weight: 700;
     font-size: 1.5rem; /* bold */
 }
 
-.feature-col p {
+.feature-box p {
     color: #8f8f8f;
 }
 
 .feature-icon {
-    font-size: 3rem;
     color: #ef8172;
+    padding-bottom: 1rem;
+}
+
+.feature-icon:hover {
+    color: #ff4c68;
+}
+
+#features {
+    padding: 7% 15%;
 }
