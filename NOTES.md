@@ -54,7 +54,15 @@ if they're too big, or if it doesn't take up the whole row if they're too small.
 is more of a logical section of the page.
 
 ### Buttons
+
 There is this awesome site called Font Awesome, which contains tons of icons, fonts, and other
 neat stuff, free for commercial use (I think). They used to be internet good-guys, but their policy
 changed a bit since Angela's lesson (now they have a "pro" version). Should definatly remember this
 though.
+
+### Responsiveness
+
+- There is a nice site which angela reccommends which rates your site's responsiveness.
+  I should get that link
+- Media queries- an awesome way to execute responsive CSS code, depending on the media
+  views the site. This can be done with the following syntax: `@media <type> <feature>`

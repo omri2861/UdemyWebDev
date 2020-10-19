@@ -34,6 +34,32 @@ h3 {
     color: #ffffff;
 }
 
+/* Title Image */
+
+#iphone {
+    transform: rotate(20deg);
+    width: 60%;
+    position: absolute;
+    /* Note that I only use position since I want to get this object out
+    of the HTML flow, and I don't change the position at all. Therefore, it's
+    no different than using a relative position here. */
+}
+
+
+@media (max-width: 1028px) {
+    /* Note: That's the size which Angela thinks is best, but that's not at all mandatory */
+    #iphone {
+        transform: rotate(0deg);
+        position: static;
+    }
+
+    #title {
+        text-align: center;
+    }
+}
+
+
+
 /* Navigation Bar */
 
 .navbar {
@@ -59,14 +85,6 @@ h3 {
 
 .download-button {
     margin: 5% 3% 5% 0;
-}
-
-/* Title Image */
-
-#iphone {
-    rotate: 20deg;
-    width: 60%;
-    position: absolute;
 }
 
 /* Features */
