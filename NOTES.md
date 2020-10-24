@@ -66,3 +66,6 @@ though.
   I should get that link
 - Media queries- an awesome way to execute responsive CSS code, depending on the media
   views the site. This can be done with the following syntax: `@media <type> <feature>`
+
+### Selector Priority
+element tag <- class <- id <- inline
