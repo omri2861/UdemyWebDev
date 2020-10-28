@@ -68,4 +68,75 @@ though.
   views the site. This can be done with the following syntax: `@media <type> <feature>`
 
 ### Selector Priority
+
 element tag <- class <- id <- inline
+
+## Javascript
+
+### Syntax
+
+- `typeof`- Returns the type of the given object, as a **string** (unlike python's `type` object)
+- `prompt` - Pops up a window which let's you enter information, and returns it. Note that there is no console in browsers- that is the easiest way to receive input from user.
+- Variable Syntax- `var name = "value";`. Note that javascript is loosely typed, so there is no type annotation.
+- Angela doesn't mention format string function, but rather uses the `+` operator. I should check the META for it.
+- Ctrl-K on browser- linux's `clear` equivillant. If you want to clear data cache- a Ctrl+F5 will do it.
+- String length is a property called `length`, not a function
+- Slicing is also used via the `slice` function. Note: there is no `step` paramter for this function
+- Declaring function: Starts with a keyword similar to `def`- `function`, then the signature (untyped, of course), then curly brackets to open a code block.
+
+### Variables
+
+There are two keywords to define variables in js: `var` and `let`.
+
+There is a difference between `var` and `let`. First, `var` is function scoperd,
+while `let` is block scoped (which means it can even be declared in a scope of
+an `if` statement). In addition, referencing an undeclared `var` will yield a
+null/ undefined value (not sure), while referencing an undeclared `let` will
+result in a javascript `ReferenceError`. Finally, like in python, `let`'s are
+allocated in runtime, while `var`s are allocated before the code runs. For some
+unknown reason, MDN seems to recommend `let`s in their beginners' tutorial, since
+it's more strict than `var` (In `let`, you must declare all of them at the
+beginning of the function, while `let` lets you do pretty much anything you want).
+
+Declaring a variable without the word `var` or `let` at the beginning will run,
+but it doesn't do what you think. Instead of creating a variable or `let`, it
+creates a member in the global scope. In javascript, `globalThis` is a saved
+keyword referring to an object containing the program's context. Declared variables
+aren't members of this object, but rather get their own memory. However, by
+default, any unreferenced keyword is first searched in that scope object.
+Also, an undeclared variable is created as a member of this object by default.
+This means that if you reference one as well, it will create a member in that
+object, returning undefined/ null, and still running.
+
+### Declaring Functions
+
+In javascript, _everything is an object_ (similarly to Python.)
+Therefore, functions can be declared in two ways. First, the classic one:
+
+```javascript
+function foo() {
+  alert("Bar!");
+}
+```
+
+Or, by assigning them directly to a variable which points to them:
+
+```javascript
+var foo = function () {
+  alert("Bar!");
+};
+```
+
+This is often used to override properties of the DOM (which is the HTML document),
+to assign functions/ callbacks into events.
+
+Similarly to variables, functions are created before the code runs. This means
+you can use functions before they're declared (but I guess it's bad practice).
+
+### Naming Conventions
+
+- Functions & Variables are camelCase
+
+### Tips
+
+- If I want to run some code, I don't have to use the `alert()` function- but rather I can use `console.log()`.
