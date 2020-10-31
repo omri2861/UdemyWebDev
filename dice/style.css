@@ -1,0 +1,39 @@
+
+body {
+    background-color: #393E46;
+    text-align: center;
+    color: #4ECCA3;
+    font-family: "Indie Flower", sans-serif;
+}
+
+h1 {
+    font-family: "Lobster", cursive;
+    font-size: 8rem;
+    text-shadow: 5px 0 #232931;  /* TODO: Take a look at this property*/
+    margin: 30px;
+}
+
+.container {
+    margin: 0 15%;
+}
+
+.dice {
+    /* width: 49%; */
+    /* NOTE: Very important: This is how Angela got the two dices to show
+    together, without starting to use bootstrap, or other frameworks...
+    Make sure that I read about this property again. */
+    display: inline-block;
+}
+
+.dice img {
+    width: 80%;
+}
+
+.dice p {
+    font-size: 2rem;
+}
+
+footer {
+    color: white;
+    margin-top: 5%;
+}
