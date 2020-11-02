@@ -140,3 +140,12 @@ you can use functions before they're declared (but I guess it's bad practice).
 ### Tips
 
 - If I want to run some code, I don't have to use the `alert()` function- but rather I can use `console.log()`.
+- `this`- Not the same as in other languages. This keyword's value changes, depending
+  on the execution's context. Generally, it binds to the function by function's caller.
+  In your own script, you don't really bind `this`, but when called as an event handler,
+  `this` is bound to the event's caller object.
+  When outside of context, `this` refers to the global object, or `window` (which
+  means `this === window` evaluates to true).
+  _NOTE_: This changes if you run javascript in `strict` mode- a mode made for
+  better optimizations, security, and exception handling. In strict mode, the
+  unbound `this` doesn't return the window, but return `undefined` instead.
