@@ -149,3 +149,50 @@ you can use functions before they're declared (but I guess it's bad practice).
   _NOTE_: This changes if you run javascript in `strict` mode- a mode made for
   better optimizations, security, and exception handling. In strict mode, the
   unbound `this` doesn't return the window, but return `undefined` instead.
+
+## jQuery
+
+jQuery always returns the same type of object, which is return by querying for
+elements using the `$` sign. The expected argument is the element's selector.
+This function is kind of a `document.querySelector` and `document.querySelectorAll`
+hybrid, returning an iterable. This means, that calling any method on the result
+actually calls the method for every element matching the provided selector.
+
+The library follows a pattern in which a lot of functions are both getters and
+setters, depending on the arguments given.
+
+- Calling the `css` method with a single argument returns the css value of that property.
+  calling with two arguments sets the second argument as the value of the first
+  argument's property.
+- Calling the `text` method with no arguments returns the containing text.
+  passing an argument to the function sets the text to that value.
+- Calling the `html` method is the equivalent of `innerHTML`, but as a function.
+  The syntax is similar to the `text` method.
+- You can set attributes of html attributes using the `attr` method.
+  The syntax is similar to the `css` method.
+- You can use `addClass` and `removeClass` on jQuery html elements as well
+- You can set elements' click or keypress event listeners by simply referring to
+  their name using the dot notation. I guess that's true for some more popular
+  event listeners.
+- To add event listeners, you can use the `on` method. The first argument is a
+  string with the event's name, and the second is the callback function.
+- You can use the `before` or `after` methods to _insert_ html elements to the page.
+- Similarly, you can use the `prepend` and `append` methods to add elements inside the
+  selected elements' HTML code. So, it's the equivalent of appending or prepending
+  html code to the selected elements' `innerHTML` property.
+
+Animations
+
+- The `show` and `hide` methods can show and hide the selected element(s) respectively.
+- The `toggle` methods toggles between these two options
+- There are some great effects methods which can animate an element: `fadeOut`,
+  `fadeIn`, `fadeToggle`, `SlideUp`, `SlideDown`, etc...
+- The `animate` method can animate an element according to your requirments.
+  You provide an object which contains CSS properties, and their new values (actually,
+  very similar to the CSS syntax), then jQuery animates the element from it's current
+  values to the new given values. Note, however, that you may only supply numeric
+  values using this method. Stuff like `color`, `font-family`, etc... won't animate
+  (jQuery throws an error).
+
+Generally, the entire library is all about the methods of that specific element object (besides ajax).
+It is all nicely documented in the [jQuery documentation page](https://api.jquery.com/).
