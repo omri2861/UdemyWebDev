@@ -39,8 +39,7 @@ function nextLevel() {
   }
 
   $("#level-title").text("Level " + gameSequence.length);
-  // TODO: Add some timeout here
-  flashButton(buttonColors[newColorIndex]);
+  setTimeout(flashButton, 500, [buttonColors[newColorIndex]]);
 }
 
 function sequencesMatch() {
