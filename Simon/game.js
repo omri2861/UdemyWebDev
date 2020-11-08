@@ -7,21 +7,34 @@ function randomColorIndex() {
   return Math.round(Math.random() * 3);
 }
 
-function pressButton(color) {
+function playColorSound(color) {
+  let audio = new Audio("sounds/" + color + ".mp3");
+  audio.play();
+}
+
+function flashButton(color) {
   /* This is the default solution online for flashing, and Angela's solution,
    * Although I don't get why you have to fade in at the beginning. */
   $("#" + color)
     .fadeIn(100)
     .fadeOut(100)
     .fadeIn(100);
-  let audio = new Audio("sounds/" + color + ".mp3");
-  audio.play();
+  playColorSound(color);
+}
+
+function pressButton(color) {
+  pressedButton = $("#" + color);
+  pressedButton.addClass("pressed");
+  setTimeout(function () {
+    pressedButton.removeClass("pressed");
+  }, 100);
+  playColorSound(color);
 }
 
 function nextLevel() {
   let newColorIndex = randomColorIndex();
   gameSequence.push(newColorIndex);
-  pressButton(buttonColors[newColorIndex]);
+  flashButton(buttonColors[newColorIndex]);
 }
 
 function addUserChoice(event) {
