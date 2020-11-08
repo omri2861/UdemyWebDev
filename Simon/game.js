@@ -34,12 +34,26 @@ function pressButton(color) {
 function nextLevel() {
   let newColorIndex = randomColorIndex();
   gameSequence.push(newColorIndex);
+  while (userSequence.length > 0) {
+    userSequence.pop();
+  }
+
+  $("#level-title").text("Level " + gameSequence.length);
+  // TODO: Add some timeout here
   flashButton(buttonColors[newColorIndex]);
 }
 
 function addUserChoice(event) {
-  let color = event.target.id;
-  let colorIndex = buttonColors.indexOf(color);
+  let color, colorIndex;
+
+  if (!isGameRunning) {
+    // Don't do anything if the game isn't running
+    // TODO: Lose the game here
+    return;
+  }
+
+  color = event.target.id;
+  colorIndex = buttonColors.indexOf(color);
   if (-1 == colorIndex) {
     console.error("Invalid value clicked: " + color);
     return;
@@ -50,7 +64,9 @@ function addUserChoice(event) {
   // Finally, after the user choice was displayed and added to the game, increase
   // the level
   // TODO: Compare sequences here
-  nextLevel();
+  if (userSequence.length == gameSequence.length) {
+    nextLevel();
+  }
 }
 
 function startGame() {
