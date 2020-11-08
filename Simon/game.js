@@ -18,6 +18,19 @@ function emptyArray(array) {
   }
 }
 
+function sequencesMatch() {
+  if (gameSequence.length < userSequence.length) {
+    console.warn("Warning: User pressed more buttons than the game");
+    return false;
+  }
+
+  for (let i = 0; i < userSequence.length; i++) {
+    if (gameSequence[i] !== userSequence[i]) return false;
+  }
+
+  return true;
+}
+
 function flashButton(color) {
   /* This is the default solution online for flashing, and Angela's solution,
    * Although I don't get why you have to fade in at the beginning. */
@@ -38,36 +51,27 @@ function pressButton(color) {
 }
 
 function nextLevel() {
+  // Add a new random color to the sequence
   let newColorIndex = randomColorIndex();
   gameSequence.push(newColorIndex);
   emptyArray(userSequence);
 
+  // Display the new color for the user
   $("#level-title").text("Level " + gameSequence.length);
   setTimeout(flashButton, 500, [buttonColors[newColorIndex]]);
 }
 
-function sequencesMatch() {
-  if (gameSequence.length < userSequence.length) {
-    console.warn("Warning: User pressed more buttons than the game");
-    return false;
-  }
-
-  for (let i = 0; i < userSequence.length; i++) {
-    if (gameSequence[i] !== userSequence[i])
-    return false;
-  }
-
-  return true;
-}
-
 function gameOver() {
+  // Show game over animations to the user
   $("body").addClass("game-over");
-  setTimeout(() => {$("body").removeClass("game-over");}, 200);
+  setTimeout(() => {
+    $("body").removeClass("game-over");
+  }, 200);
   let audio = new Audio("sounds/wrong.mp3");
   audio.play();
   $("#level-title").text("Game Over, Press Any Key to Restart");
-  
-  // Reset the game state:
+
+  // Reset the game state
   isGameRunning = false;
   emptyArray(userSequence);
   emptyArray(gameSequence);
@@ -95,7 +99,7 @@ function addUserChoice(event) {
     return;
   }
   if (userSequence.length === gameSequence.length) {
-      nextLevel();
+    nextLevel();
   }
 }
 
