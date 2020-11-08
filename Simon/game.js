@@ -43,6 +43,24 @@ function nextLevel() {
   flashButton(buttonColors[newColorIndex]);
 }
 
+function sequencesMatch() {
+  if (gameSequence.length != userSequence.length) {
+    console.warn("Warning: Is sequence matching called when sequences are with different lengths");
+    return false;
+  }
+
+  for (let i = 0; i < gameSequence.length; i++) {
+    if (gameSequence[i] !== userSequence[i])
+    return false;
+  }
+
+  return true;
+}
+
+function gameOver() {
+  alert("Game OVER");
+}
+
 function addUserChoice(event) {
   let color, colorIndex;
 
@@ -54,18 +72,20 @@ function addUserChoice(event) {
 
   color = event.target.id;
   colorIndex = buttonColors.indexOf(color);
-  if (-1 == colorIndex) {
+  if (-1 === colorIndex) {
     console.error("Invalid value clicked: " + color);
     return;
   }
   userSequence.push(colorIndex);
   pressButton(color);
 
-  // Finally, after the user choice was displayed and added to the game, increase
-  // the level
-  // TODO: Compare sequences here
-  if (userSequence.length == gameSequence.length) {
-    nextLevel();
+  if (userSequence.length === gameSequence.length) {
+    if (sequencesMatch()) {
+      nextLevel();
+    }
+    else {
+      gameOver();
+    }
   }
 }
 
