@@ -3,21 +3,25 @@ var gameSequence = [];
 var userSequence = [];
 var isGameRunning = false;
 
+/* Generates a pseudo-random index, matching a single color */
 function randomColorIndex() {
   return Math.round(Math.random() * 3);
 }
 
+/* Plays the color's matching sound from the sound library */
 function playColorSound(color) {
   let audio = new Audio("sounds/" + color + ".mp3");
   audio.play();
 }
 
+/* Empties the received array from it's elements completely. */
 function emptyArray(array) {
   while (array.length > 0) {
     array.pop();
   }
 }
 
+/* Checks if gameSequence starts with userSequence*/
 function sequencesMatch() {
   if (gameSequence.length < userSequence.length) {
     console.warn("Warning: User pressed more buttons than the game");
@@ -31,6 +35,7 @@ function sequencesMatch() {
   return true;
 }
 
+/* Flashes a button, to show the user the new color in the sequence */
 function flashButton(color) {
   /* This is the default solution online for flashing, and Angela's solution,
    * Although I don't get why you have to fade in at the beginning. */
@@ -41,6 +46,7 @@ function flashButton(color) {
   playColorSound(color);
 }
 
+/* Animates the clicked button */
 function pressButton(color) {
   pressedButton = $("#" + color);
   pressedButton.addClass("pressed");
@@ -50,6 +56,7 @@ function pressButton(color) {
   playColorSound(color);
 }
 
+/* Adds a level to the game's state, and updates the page to show the new level */
 function nextLevel() {
   // Add a new random color to the sequence
   let newColorIndex = randomColorIndex();
@@ -61,6 +68,7 @@ function nextLevel() {
   setTimeout(flashButton, 500, [buttonColors[newColorIndex]]);
 }
 
+/* Shows the Game Over animation, and reset's the game's state */
 function gameOver() {
   // Show game over animations to the user
   $("body").addClass("game-over");
@@ -77,6 +85,7 @@ function gameOver() {
   emptyArray(gameSequence);
 }
 
+/* Appends the user's choice to the user sequence, checks it and shows the corresponding animation */
 function addUserChoice(event) {
   let color, colorIndex;
 
@@ -103,6 +112,7 @@ function addUserChoice(event) {
   }
 }
 
+/* Sets the state to start a new game */
 function startGame() {
   if (!isGameRunning) {
     nextLevel();
