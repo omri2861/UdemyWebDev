@@ -12,6 +12,12 @@ function playColorSound(color) {
   audio.play();
 }
 
+function emptyArray(array) {
+  while (array.length > 0) {
+    array.pop();
+  }
+}
+
 function flashButton(color) {
   /* This is the default solution online for flashing, and Angela's solution,
    * Although I don't get why you have to fade in at the beginning. */
@@ -34,21 +40,19 @@ function pressButton(color) {
 function nextLevel() {
   let newColorIndex = randomColorIndex();
   gameSequence.push(newColorIndex);
-  while (userSequence.length > 0) {
-    userSequence.pop();
-  }
+  emptyArray(userSequence);
 
   $("#level-title").text("Level " + gameSequence.length);
   setTimeout(flashButton, 500, [buttonColors[newColorIndex]]);
 }
 
 function sequencesMatch() {
-  if (gameSequence.length != userSequence.length) {
-    console.warn("Warning: Is sequence matching called when sequences are with different lengths");
+  if (gameSequence.length < userSequence.length) {
+    console.warn("Warning: User pressed more buttons than the game");
     return false;
   }
 
-  for (let i = 0; i < gameSequence.length; i++) {
+  for (let i = 0; i < userSequence.length; i++) {
     if (gameSequence[i] !== userSequence[i])
     return false;
   }
@@ -58,6 +62,11 @@ function sequencesMatch() {
 
 function gameOver() {
   alert("Game OVER");
+  
+  // Reset the game state:
+  isGameRunning = false;
+  emptyArray(userSequence);
+  emptyArray(gameSequence);
 }
 
 function addUserChoice(event) {
@@ -78,13 +87,12 @@ function addUserChoice(event) {
   userSequence.push(colorIndex);
   pressButton(color);
 
+  if (!sequencesMatch()) {
+    gameOver();
+    return;
+  }
   if (userSequence.length === gameSequence.length) {
-    if (sequencesMatch()) {
       nextLevel();
-    }
-    else {
-      gameOver();
-    }
   }
 }
 
