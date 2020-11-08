@@ -77,8 +77,7 @@ function addUserChoice(event) {
   let color, colorIndex;
 
   if (!isGameRunning) {
-    // Don't do anything if the game isn't running
-    // TODO: Lose the game here
+    gameOver();
     return;
   }
 
