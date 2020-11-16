@@ -137,6 +137,22 @@ you can use functions before they're declared (but I guess it's bad practice).
 
 - Functions & Variables are camelCase
 
+### Import & Export
+
+Imports and exports are a very complicated manner in Javascript (for some unknown reason).
+
+For now, this is what you need to know: There are two types of exports - named, and `default`. A single
+module can have many named exports, but only one default export. I won't elaborate on named exports here.
+If you ever reach a situation when you need it, visit [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
+
+These two exports type are present in the `import` statement as well. For now, all you need to know
+is that to import the default export, the syntax is `import <name> from "<module>"`. Note that name
+can be whatever you decide (so, you can think of it as similar to the `import _ as _` statement in python).
+
+To import all exports, you can use a wildcard: `import * as <name> from "<module>"`. Then, to access
+the exports, use the module name with a dot notation. The default export will be saved as the `default` key,
+not as it's name in the module. However, styling guides may often discourge this type of import.
+
 ### Tips
 
 - If I want to run some code, I don't have to use the `alert()` function- but rather I can use `console.log()`.
