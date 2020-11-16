@@ -226,22 +226,45 @@ the following differences:
 - Inline styling is also different. Inline styling now doesn't receive a string- but rather a Javascript
   object. Each property of is is a variable (not a string, like in JSON), mapping to the style value, _always as a string_.
   For example, say we have the following css code:
-  
+
   ```css
   .heading {
     font-size: 20px;
     border: solid 1px;
   }
   ```
-  
+
   The equivalent react object would be:
-  
+
   ```jsx
   {
     fontSize: "20px",
     border: "solid 1px",
   }
   ```
-  
+
   Also note that just like in the HTML attributes, the CSS style attribute names are now changed to
   Javascript's convention (can't have enough of that cancer).
+
+### Componenets
+
+The convention is to create a `components` directory in your project's source. Each file there will
+contain a single 'component' of your app. A component is just a semantic way to divide your app
+from being a 'spaghetti-code'. It really means that it's an HTML component, which can be any size you
+feel is appropraite.
+
+Then, the React framework is able to implement these components as HTML tags in your application.
+In order for that to work, you must follow these rules:
+
+- A component is actually a Javascript function, which always returns the JSX HTML element.
+- The function's name must be PascalCase. The name must start with a capital letter, for React to
+  recognize it as a component tag, rather than an HTML tag.
+
+Then the convention we use is as mentioned, to have a single function like that in each component file
+(and the required code for it to render), then export that specific function.
+
+Then, to implement it in your app, just use an HTML tag with the component's name, .e.g. `<Example>`.
+Also, always use a self-closing tag using those components, so actually, use `<Example />` (NOTE:
+not sure what will happen if you use a normal tag and put elements inside. Could be intersting).
+
+Also, by convention, you need to have a single `App` component, which contains all the rest.
