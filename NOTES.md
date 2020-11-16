@@ -202,6 +202,8 @@ It is all nicely documented in the [jQuery documentation page](https://api.jquer
 React JS is porbably the most cancerous framework there is on the internet. However, it is still
 pretty powerful, anc considered the META in a lot of places, so we'll use it anyway.
 
+Before we begin, be sure to check out [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react).
+
 The code you write is actally an extended version of ECMASCript called 'JSX'- The 'X' standing for
 either extended or XML. This means that the code you write is actually javascript code with embedded
 html tags in it (What did I say about cancer?). It is parsed into a javascript object, which is then
