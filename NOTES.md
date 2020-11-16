@@ -181,7 +181,7 @@ setters, depending on the arguments given.
   selected elements' HTML code. So, it's the equivalent of appending or prepending
   html code to the selected elements' `innerHTML` property.
 
-Animations
+### Animations
 
 - The `show` and `hide` methods can show and hide the selected element(s) respectively.
 - The `toggle` methods toggles between these two options
@@ -196,3 +196,50 @@ Animations
 
 Generally, the entire library is all about the methods of that specific element object (besides ajax).
 It is all nicely documented in the [jQuery documentation page](https://api.jquery.com/).
+
+## ReactJS
+
+React JS is porbably the most cancerous framework there is on the internet. However, it is still
+pretty powerful, anc considered the META in a lot of places, so we'll use it anyway.
+
+The code you write is actally an extended version of ECMASCript called 'JSX'- The 'X' standing for
+either extended or XML. This means that the code you write is actually javascript code with embedded
+html tags in it (What did I say about cancer?). It is parsed into a javascript object, which is then
+passed to the React API, to be presented in the application.
+
+The way it works backstage is that you actually have a 'compiler' called 'Babel', which compiles the
+HTML tags to _vanilla javascript code_. Which means, for example, that a raw HTML tag will be repalced
+with a call to vanilla javascript's `HTMLElement` constructor, specifying the corresponding string (Cancer!).
+
+Because of this, the HTML syntax isn't _actually_ html, but rather a very simillar version of it, with
+the following differences:
+
+- To use inline Javascript code, you use the `{}` (curly braces) sign, and simply write the code inside.
+  This can be done in any part of the HTML code (which is actually neat).
+- Tag attribute names are different. In HTML, the convention states that the name are all lowercase, even
+  if there's more than one word. However, in JSX, we change the attribute names to match Javscript's
+  convention, which is camalCase. To be more specific, the name of the attribute actually changes to
+  it's name in the Javascript's `HTMLElement` class. So, for example, the HTML `class` attribute now
+  turns to `className`.
+- Inline styling is also different. Inline styling now doesn't receive a string- but rather a Javascript
+  object. Each property of is is a variable (not a string, like in JSON), mapping to the style value, _always as a string_.
+  For example, say we have the following css code:
+  
+  ```css
+  .heading {
+    font-size: 20px;
+    border: solid 1px;
+  }
+  ```
+  
+  The equivalent react object would be:
+  
+  ```jsx
+  {
+    fontSize: "20px",
+    border: "solid 1px",
+  }
+  ```
+  
+  Also note that just like in the HTML attributes, the CSS style attribute names are now changed to
+  Javascript's convention (can't have enough of that cancer).
