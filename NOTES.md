@@ -262,7 +262,7 @@ the following differences:
   Also note that just like in the HTML attributes, the CSS style attribute names are now changed to
   Javascript's convention (can't have enough of that cancer).
 
-### Componenets
+### Components
 
 The convention is to create a `components` directory in your project's source. Each file there will
 contain a single 'component' of your app. A component is just a semantic way to divide your app
@@ -284,3 +284,53 @@ Also, always use a self-closing tag using those components, so actually, use `<E
 not sure what will happen if you use a normal tag and put elements inside. Could be intersting).
 
 Also, by convention, you need to have a single `App` component, which contains all the rest.
+
+### Data Mapping
+
+This is a method in which you take an array of objects, and then render it to the screen, with it's
+style and HTML structure. The array can be a constant value, if you want to practice front-end development
+only, but it can be obtained from the server or from a database as well (I guess).
+
+You define a component that represents each object in the array. Say, in the note keeper app, a good
+example is a simple Note object/ component, which has two members: `title` and `content`.
+
+First, we want to pass these members to the React component. We do this by passing them as HTML attributes
+to the custom component's tag. Then, we receive a single object in the component function
+(normally named `props`), which is an object containing all of these attributes. Finally, we can
+reference them using the `{}` curly braces. For example, in the `Note` component, we'd use `{props.title}` to
+use it's title.
+
+Now, to render a component for each item in the array, we can use ES6's `Array.map()` function. We'll
+supply a callback to it, returning the component's tag, placing the object's members inside the tag's attribtues.
+We can make it look very elegant using arrow functions.
+
+#### The `key` Attribute
+
+When we iterate over an array of objects using `map`, rendeing a component for each item, React requires
+a `key` attribute for each component. Each key must be unique for each component, in order for React
+to properly render the object (I have no idea why though). It's recommended to save these keys as the
+id of each object in the array (as it's member). It's also considered very bad practice to use the array's
+index as key, since there are high chances of it changing, and not being unique for each component.
+Also, it is recommended to pass the key as an attribute of the component, and not of the elements inside it.
+
+**NOTE**: You can't access the key via the `props` object. This is a saved React attribute.
+
+### Conditional Rendering
+
+You can change elements using conditions. For example, change the text of a button, depending on wether
+the user is registered or not.
+
+This is done by returning a different HTML element for the rendring function. It can be done using a
+function, which may return different elements, or by the trenary operator (`<expression> ? <true> : <false>`).
+
+However, I can't think of a good usage to this, since this code *only runs once, during the rendering process*.
+
+**NOTE**: There is a cancerous way to do things, if you want to toggle whether an item will be rendered or
+not. This can be done by using the AND operator (`&&`). Since, just writing an HTML element, even without
+returning it, translates to vanilla javascript function calls, if you put your condition on the left side,
+and the element on the right, This syntax will work. If the condition is 'false', the right side
+won't even evaluate, so the code won't run. However, if the left side is `true`, the right side will
+evaluate. A boolean expression will return, which React will probaly ignore, but the HTML functions will
+run, resulting in the element being rendered.
+
+Just the kind of stuff which makes me doubt this framework.
