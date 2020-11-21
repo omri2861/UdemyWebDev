@@ -32,6 +32,10 @@ function App() {
         notesKey++;
     }
 
+    function deleteNote(key) {
+        setNotes((prevNotes) => prevNotes.filter((note) => note.key !== key));
+    }
+
     return (
         <div>
             <Header />
@@ -39,8 +43,10 @@ function App() {
             {notes.map((note) => (
                 <Note
                     key={note.key}
+                    id={note.key}
                     title={note.title}
                     content={note.content}
+                    onDelete={deleteNote}
                 />
             ))}
             <Footer />
