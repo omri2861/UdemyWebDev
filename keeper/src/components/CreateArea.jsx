@@ -23,7 +23,7 @@ function CreateArea(props) {
 
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input
           name="title"
           placeholder="Title"
