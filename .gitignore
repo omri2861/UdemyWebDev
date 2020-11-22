@@ -9,3 +9,6 @@ resources/
 
 # Bootstrap source which I want locally
 bootstrap/
+
+# npm files
+package-lock.json
