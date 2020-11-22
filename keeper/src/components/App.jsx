@@ -18,14 +18,14 @@ function App() {
         },
     ]);
 
-    function addNote(title, content) {
+    function addNote(newNote) {
         setNotes((prevNotes) => {
             return [
                 ...prevNotes,
                 {
                     key: notesKey,
-                    title: title,
-                    content: content,
+                    title: newNote.title,
+                    content: newNote.content,
                 },
             ];
         });

@@ -1,23 +1,23 @@
 import React from "react";
 
 function CreateArea(props) {
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
+  const [newNote, setNewNote] = React.useState({title: "", content: ""});
 
   function updateForm(event) {
     const { name, value } = event.target;
 
-    if (name === "title") {
-      setTitle(value);
-    } else if (name === "content") {
-      setContent(value);
-    }
+    setNewNote((prevNote) => {
+      return {
+        ...prevNote,
+        [name]: value
+      };
+    });
+
   }
 
   function submit(event) {
-    props.onSubmission(title, content);
-    setTitle("");
-    setContent("");
+    props.onSubmission(newNote);
+    setNewNote({title: "", content: ""});
     event.preventDefault();
   }
 
@@ -27,14 +27,14 @@ function CreateArea(props) {
         <input
           name="title"
           placeholder="Title"
-          value={title}
+          value={newNote.title}
           onChange={updateForm}
         />
         <textarea
           name="content"
           placeholder="Take a note..."
           rows="3"
-          value={content}
+          value={newNote.content}
           onChange={updateForm}
         />
         <button onClick={submit}>Add</button>
