@@ -1,7 +1,11 @@
 import React from "react";
+import AddIcon from '@material-ui/icons/Add';
+import Fab from "@material-ui/core/Fab";
+import Collapse from "@material-ui/core/Collapse";
 
 function CreateArea(props) {
   const [newNote, setNewNote] = React.useState({title: "", content: ""});
+  const [isCollapsed, setIsCollapsed] = React.useState(true);
 
   function updateForm(event) {
     const { name, value } = event.target;
@@ -21,8 +25,12 @@ function CreateArea(props) {
     event.preventDefault();
   }
 
+  function expand() {
+    setIsCollapsed(false);
+  }
+
   return (
-    <div>
+    <div onClick={expand}>
       <form className="create-note">
         <input
           name="title"
@@ -30,6 +38,7 @@ function CreateArea(props) {
           value={newNote.title}
           onChange={updateForm}
         />
+        <Collapse in={!isCollapsed}>
         <textarea
           name="content"
           placeholder="Take a note..."
@@ -37,7 +46,8 @@ function CreateArea(props) {
           value={newNote.content}
           onChange={updateForm}
         />
-        <button onClick={submit}>Add</button>
+        <Fab onClick={submit}><AddIcon /></Fab>
+        </Collapse>
       </form>
     </div>
     );
