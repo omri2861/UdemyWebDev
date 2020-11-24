@@ -334,3 +334,34 @@ evaluate. A boolean expression will return, which React will probaly ignore, but
 run, resulting in the element being rendered.
 
 Just the kind of stuff which makes me doubt this framework.
+
+### The `useEffect` Hook
+
+This entire section will be a TL;DR summary of this hook.
+
+An 'effect' - short for 'side effect', meaning additional functionality which should be ran after the
+component is renderd, a 'side effect' of this component. It's just bad naming for a post-render hook, I guess.
+
+Simply put- this is called every time a component is rendered. It receives a callback function, which
+will be queued to execute when the component is rendered, or more percisely, when the real DOM is updated.
+
+This is considered a big deal in React, since it used to be that you'd have to override two functions to
+run a hook like this- `componentDidMount`, which runs when the component is rendered for the _first time only_,
+(namely, 'mounted'), and `componentDidUpdate`, which runs when the component is updated, or more specifically -
+every time it's rendered but the first one.
+
+The `useEffect` simply replaces both of these overrides.
+
+In addition, if you have a hook with a cleanup required (for example- you subscribe to a variable, and want
+to unsbscribe when the component is removed), you'd have to override additional hook methods. This particularly
+annoyed react developers since they had to write the logic of the same hook/ effect in different places, and
+call it multiple times.
+
+The `useEffect` API overcomes this by treating the callback function's return value (yes, it's a callback which returns a callback)
+as the cleanup function. The callback within callback approach is, accroding to React's documentation, on purpose,
+since every effect must have its own matching clean up function.
+
+If you think about it, however, this means that the callback function for the effect is created again every time
+the component is created. That is also, seemingly on purpose. Since the effect refrences the component's state,
+or more specifically, variables outside it's scope, it has to be recreated for every render. For that reason,
+the cleanup callback is only created once for each effect, so that solves the previous problem, at least.
