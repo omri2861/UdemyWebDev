@@ -365,3 +365,99 @@ If you think about it, however, this means that the callback function for the ef
 the component is created. That is also, seemingly on purpose. Since the effect refrences the component's state,
 or more specifically, variables outside it's scope, it has to be recreated for every render. For that reason,
 the cleanup callback is only created once for each effect, so that solves the previous problem, at least.
+
+### ReactJS Styling
+
+Styling seems to be an issue when using React. Mainly because CSS wasn't designed with component orientation
+in mind, but with global properties for everything. The community came up with some solution for this. None
+is perfect, but anyway, here they are:
+
+#### Inline Styling
+
+Before React, inline styling was considered a bad practice, because you'd have to repeat the style for
+every time you use the element, and change it in all of the element's occurances. Now, as you export
+a componenet, which includes it's own style, that's no longer a problem.
+
+Another issue solved by React is that with HTML, inline styling would mix CSS and HTML and hurt your eyes.
+This is also solved, since now you're writing CSS inside javascript- the style object can be saved
+outside as a variable, an invoked with a single word within the HTML code.
+
+**Pros**
+- Quick & easy
+- Very easy to style conditionally
+
+**Cons**
+- Can be very quickly abused and become cancer
+
+**Best Use When**
+
+You want a single style property changed, or conditionally rendered.
+But generally, try to avoid using this technique.
+
+#### Regular CSS
+
+A JS expansion which allows importing a CSS file into the code.
+
+Note that when using a CSS file as a javascript module, the class name convention changes from all-lower-dashes
+to camelCase, even though it's pure CSS.
+
+**Pros**
+- You write pure CSS, and not javascript object
+- Very easy to manage the code, since you can have a single CSS file for each React component. That way
+  you can easily style each component
+
+**Cons**
+- Annoying to edit, as it's not in your component's file
+
+**Best Use When**
+You're not using a styling framework (like bootstrap or MaterialUI), and you have a lot of code to write.
+
+#### CSS in JS
+
+More commonly known as `useStyles` function. This function translates a pure javascript object into
+a `<style>` HTML element object, with the styles you entered.
+
+**Pros**
+- Scoped by default, which means the styles are only applied to the component which uses the object
+- Easy to write and learn
+- You can either edit the style within your code if it's neat, or export it to another file.
+
+**Cons**
+- Can be annoying when a lot of styling is required
+- Can be annoying when combining classes, but I guess it's just a matter of using it correctly
+- I'm pretty sure that the CSS is still global, and the separtion for components it just logical
+
+**Best Use When**
+
+You don't have much styling to do, since you're using a styling framework like MaterialUI or bootstrap.
+
+#### Styled Components
+
+This module takes in CSS code, written within backticks, and applies the CSS inside to the selcted component.
+
+**Pros**
+- You write purse CSS, with lower-case-dashes convention
+- The styles are automatically applied to your React component. No dealing with annoying javascript objects.
+
+**Cons**
+- Requires an external dependency (which might be installed with React, not sure about it)
+
+#### Honorable Mentions
+
+- CSS Module - At the begining, I thought it was regular CSS. So, I don't really get that one.
+- Stylable - A CSS/ javascript farmework, considered very relevant in the component orientation for some reason.
+- Other CSS frameworks- Sass, Less, etc...
+
+#### Summary
+
+For now, the recommended method CSS in JS, as it's very easy to edit for each component, within the
+component code. It has a very small learning curve, and seems to fit all my needs for small applications.
+In addition, I saw the front-end teams at my workplace using that method as well.
+
+If I ever encounter issues with it in the future, I'll refer back here to see other options. Some intresting
+articles about ReactJS styling:
+
+- [Style React Components: 7 Ways Compared](https://www.sitepoint.com/react-components-styling-options/) - Pretty
+  much sums up all the methods described here, and compares them nicely.
+- [Styling Best Practices Using React](https://medium.com/the-non-traditional-developer/styling-best-practices-using-react-c37b96b8be9c)-
+  consults the React good practices.
