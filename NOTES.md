@@ -213,6 +213,81 @@ setters, depending on the arguments given.
 Generally, the entire library is all about the methods of that specific element object (besides ajax).
 It is all nicely documented in the [jQuery documentation page](https://api.jquery.com/).
 
+## NodeJS
+
+So, as we already node is simply a program which allows you to run javascript code without the browser's
+sandbox - which means you can access files, add processes, etc... Basically means that you can now
+use javascript for any application you want, just like Java or Python.
+
+Node can't render webpages like your browser does, and doesn't have a DOM object.
+
+That's pretty much all there's to it, but most of the knowledge here actually comes from the packages
+Node can execute:
+
+### NPM
+
+Node Package Manager. TODO: Add documentation
+
+### ExpressJS
+
+This is a utility package for HTTP & HTTPS. The general idea is you route requests to callbacks.
+These callbacks don't return a value, but instead they communicate directly with the client, using
+the two ExpressJS basic objects: '`req` and `res`.
+
+To start an ExpressJS server, you need to create an app using the `express()` function. The good
+practice is to place it in a global `const` variable called `app`.
+
+Then, you proceed to define the routes of the app. To route a simple request, the syntax is
+`app.METHOD(route, callback)`, when method could be `get`, `post`, etc...
+
+Before you start routing, you may also define some utilities that ExpressJS may use. The two common
+ones we used in the example servers are:
+1. `app.use()` - This function receives a single callback function. It runs that function on every
+   routed request, and passes it's return value as `req`, instead of the default unparsed string.
+   This `use` method is meant precisely for that - you can easily parse any request, just how you'd
+   like. You may also supply an array of functions, or just functions separated by commas, or both.
+2. `app.set()` - The app uses other utilities to other things as well. This function receives a
+   string as it's first argument, and switches over it to override each utility used. In our case,
+   we used the `"view engine"` to override the render engine of webpages with EJS, but there are
+   other utilities such as proxying, caching, etc...
+
+It's best you read further in the documentation about these methods, and others. The documentation
+is really simple and doesn't have too much functions / info.
+
+### nodemon
+
+A package which monitors your development directory when running node. If you change one the source
+files you're working on, the package automatically restarts Node for you, similar to how the React
+engine works.
+
+Make sure to install it globally on your PC, and not just for your project, using the `-g` flag.
+
+### body-parser
+
+A NodeJS package (installed using NPM) to prase HTTP requests. It extracts only the body of the request
+into a javascript object. We used it with the `app.use()` function of Express to easily receive the
+bodies of the HTTP request, without other useless information, and without writing any code at all.
+
+NOTE: The `extended` flag must be provided when creating a parser. Angela sets it `true` by default,
+but I'm not sure if that's good in terms of security. I should check that out.
+
+### EJS
+
+Another package, _which is not ExpressJS_ (surprisingly), that allows running JS code written within
+the HTML page, at server side - yes, similarly to PHP. Which makes me wonder, have we learned something
+at all...
+
+To use it, you simply overwrite the ExpressJS app's `"view engine"` with EJS (see their documentation),
+and use the `res.render()` function in your routed callbacks. Then, the JS code will run automatically
+on your Node instance.
+
+**NOTE**: By default, if there's an error rendering the page, you'll get a stacktrace at the client. Very bad.
+It could be a nice exercise to replace it with a 500 page.
+
+In addition to running JS code in order to add elements to the page, you can also _include_ other
+HTML files to save lots of code duplication for yourself, and more importantly make sure that each
+page in the website has the same layout and style.
+
 ## ReactJS
 
 React JS is porbably the most cancerous framework there is on the internet. However, it is still
