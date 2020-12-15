@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const lowerCase = require("lodash.lowercase");
 
 const homeStartingContent =
     "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -51,14 +52,21 @@ app.post("/compose", (req, res) => {
     res.redirect("/home");
 });
 
-app.get("/post/:num", (req, res) => {
-  let postNum = parseInt(req.params.num);
-  if (isNaN(postNum) || (1 > postNum  || postNum > posts.length)) {
-    // TODO: Make sure to send a 404 code as well (and not 200 and the page)
-    res.render("notFound", {resource: req.path});
-    return;
+app.get("/post/:postTitle", (req, res) => {
+  let requestedTitle = req.params.postTitle;
+
+  const matchingPost = posts.find(post => post.title.toLowerCase() === lowerCase(requestedTitle));
+
+  if (matchingPost !== undefined) {
+      console.log("Found post! Rendering...");
+      res.render("post", {post: matchingPost});
+      console.log("Done rendering post");
   }
-  res.render("post", {post: posts[postNum - 1]});
+  else {
+      // TODO: Also send a 404 not found code (instead of current 200 ok and the page)
+      res.render("notFound", {resource: req.url});
+  }
+
 });
 
 app.listen(3000, () => {
