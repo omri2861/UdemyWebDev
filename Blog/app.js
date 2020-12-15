@@ -13,7 +13,13 @@ const contactContent =
 
 const app = express();
 
-var posts = [];
+var posts = [
+  {title: "Day 1", body: "This is the first post of the website! How great! I'm so excited that the site is running so well :) "},
+  {title: "Day 2", body: "This is the peak of my development process! Everything goes great and the exercises are easy..."},
+  {title: "Day 3", body: "Stuff are getting a little trikcy... but no matter, I guess the syntax is just kinda weird..."},
+  {title: "Day 4", body: "Everything is cancer! I hate this... Why did I decide to become a web developer??"},
+  {title: "Day 5", body: "I'm done with the development. It works. Don't talk to me, ever again."},
+];
 
 app.set("view engine", "ejs");
 
@@ -55,6 +61,6 @@ app.get("/post/:num", (req, res) => {
   res.render("post", {post: posts[postNum - 1]});
 });
 
-app.listen(3000, function () {
+app.listen(3000, () => {
     console.log("Server started on port 3000");
 });
