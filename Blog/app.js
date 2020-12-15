@@ -54,8 +54,8 @@ app.post("/compose", (req, res) => {
 app.get("/post/:num", (req, res) => {
   let postNum = parseInt(req.params.num);
   if (isNaN(postNum) || (1 > postNum  || postNum > posts.length)) {
-    // TODO: 404 page
-    res.send("Not Found");
+    // TODO: Make sure to send a 404 code as well (and not 200 and the page)
+    res.render("notFound", {resource: req.path});
     return;
   }
   res.render("post", {post: posts[postNum - 1]});
