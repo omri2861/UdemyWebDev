@@ -58,9 +58,7 @@ app.get("/post/:postTitle", (req, res) => {
   const matchingPost = posts.find(post => post.title.toLowerCase() === lowerCase(requestedTitle));
 
   if (matchingPost !== undefined) {
-      console.log("Found post! Rendering...");
       res.render("post", {post: matchingPost});
-      console.log("Done rendering post");
   }
   else {
       // TODO: Also send a 404 not found code (instead of current 200 ok and the page)
